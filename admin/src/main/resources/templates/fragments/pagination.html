@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="../../public/static/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" href="../../public/static/css/index.css"/>
+<div xmlns:th="http://www.thymeleaf.org">
+
+  <div th:fragment="page(args)" class="row page-con">
+    <div th:if="${args.total} gt 0">
+
+      <div class="col-md-6 page-info">
+            <span th:text="'第'+ ${(args.pageIndex-1) * args.pageSize+1}+ '-'
+            + ${args.pageIndex eq args.pageCount ? args.total : args.pageIndex * args.pageSize} + '条，共'
+            + ${args.total} + '条记录'">第20-38条，功能50条</span>
+      </div>
+      <div class="col-md-6 center-block">
+        <ul class="pagination pull-right">
+          <li th:if="${args.pre} gt 0"><a th:href="${args.url} + 'pageIndex=' + ${args.pre}">上一页</a>
+          </li>
+          <li th:unless="${args.pre} gt 0" class="disabled"><a>上一页</a></li>
+
+          <li th:each="idx: ${args.items}"
+              th:class="(${args.pageIndex} == ${idx}) ? 'active' : 'disable'">
+            <a th:text="${idx}"
+               th:href="(${idx} == '...') ? '#' : (${args.url} + 'pageIndex=' + ${idx}) ">1</a>
+          </li>
+
+          <li th:if="${args.next} gt 1"><a
+              th:href="${args.url} + 'pageIndex=' + ${args.next}">下一页</a></li>
+          <li th:unless="${args.next} gt 1" class="disabled"><a>下一页</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>

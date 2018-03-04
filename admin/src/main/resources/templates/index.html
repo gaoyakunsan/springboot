@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{fragments/layout}"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8"/>
+</head>
+
+<!-- Bootstrap 3.3.6 -->
+<link rel="stylesheet" href="../public/static/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" href="../public/static/plugins/smoke/css/smoke.css"/>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="../public/static/css/font-awesome.min.css"/>
+<!-- Theme style -->
+<link rel="stylesheet" href="../public/static/dist/css/AdminLTE.css"/>
+<!-- AdminLTE Skins. Choose a skin from the css/skins
+     folder instead of downloading all of them to reduce the load. -->
+<link rel="stylesheet" href="../public/static/dist/css/skins/_all-skins.css"/>
+<link rel="stylesheet" href="../public/static/plugins/datepicker/datepicker3.css"/>
+<!-- Daterange picker -->
+<link rel="stylesheet" href="../public/static/plugins/daterangepicker/daterangepicker.css"/>
+<link rel="stylesheet" href="../public/static/css/index.css"/>
+
+<body>
+
+<div layout:fragment="nav">
+  <section th:replace="~{fragments/navigator :: nav('index', 'index')}"></section>
+</div>
+
+<section layout:fragment="content">
+  <div class="jumbotron">
+    <h2 class="text-info text-center">欢迎登录 &nbsp;<i class="fa fa-cubes"></i> 压制系统管理后台！</h2>
+  </div>
+</section>
+
+
+<p layout:fragment="foot-script">
+</p>
+
+</body>
+</html>

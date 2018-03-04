@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="../../public/static/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="../../public/static/dist/css/AdminLTE.css"/>
+<link rel="stylesheet" href="../../public/static/dist/css/skins/_all-skins.css"/>
+<link rel="stylesheet" href="../../public/static/bootstrap/css/bootstrap.css"/>
+<link rel="stylesheet" href="../../public/static/css/index.css"/>
+
+<script src="../../public/static/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../../public/static/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+
+<!--SMOKE-->
+<script src="../../public/static/plugins/smoke/js/smoke.js"></script>
+<!-- AdminLTE App -->
+<script src="../../public/static/dist/js/app.js"></script>
+<script src="../../public/static/dist/js/rightCtr.js"></script>
+
+<div xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+  <section class="sidebar" th:fragment="nav(module,item)">
+    <div>
+      <ul class="sidebar-menu">
+        <li class="header">任务</li>
+        <li th:class="(${item} =='admin') ? 'active' : ''">
+          <a href="../admin.html" th:href="@{/admin}">
+            <i class="fa fa-search"></i><span>用户列表11</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <ul class="sidebar-menu">
+        <li class="header">设置</li>
+        <li th:class="(${item} =='data-center') ? 'active' : ''">
+          <a href="../setting/data-center.html" th:href="@{/data-centers}">
+            <i class="fa fa-building"></i><span>数据中心</span>
+          </a>
+        </li>
+        <li th:class="(${item} =='server') ? 'active' : ''">
+          <a href="../setting/setting/server.html" th:href="@{/servers}">
+            <i class="fa fa-server"></i><span>服务器</span>
+          </a>
+        </li>
+        <li th:class="(${item} =='task-pool') ? 'active' : ''">
+          <a th:href="@{/task-pools}">
+            <i class="fa fa-th"></i><span>任务池</span>
+          </a>
+        </li>
+        <li th:class="(${item} =='task-queue') ? 'active' : ''">
+          <a href="../setting/task-queue.html" th:href="@{/task-queues}">
+            <i class="fa fa-list-ol"></i><span>任务队列</span>
+          </a>
+        </li>
+        <li th:class="(${item} =='worker') ? 'active' : ''">
+          <a href="../setting/worker.html" th:href="@{/workers}">
+            <i class="fa fa-cube"></i><span>压制节点</span>
+          </a>
+        </li>
+        <li th:class="(${item} =='notify-config') ? 'active' : ''">
+          <a href="../setting/notify-config.html" th:href="@{/notify-configs}">
+            <i class="fa fa-bullhorn"></i><span>回调通知</span>
+          </a>
+        </li>
+        <li th:class="(${item} =='trans-tmpl') ? 'active' : ''">
+          <a href="#" th:href="@{/trans-templates}">
+            <i class="fa fa-clone"></i><span>压制模板</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="sidebar-menu">
+        <li class="header">监控</li>
+        <li>
+          <a href="#">
+            <i class="fa fa-cube"></i><span>节点状态</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-line-chart"></i><span>压制效率</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="sidebar-menu" sec:authorize="hasRole('SUPER_ADMIN')">
+        <li class="header">系统</li>
+        <li th:class="(${item} =='log') ? 'active' : ''">
+          <a href="../system/logs.html" th:href="@{/logs}">
+            <i class="fa fa-history"></i> <span>系统日志</span>
+          </a>
+        </li>
+        <li th:class="(${item} =='users') ? 'active' : ''">
+          <a href="../system/users.html" th:href="@{/users}">
+            <i class="fa fa-user-secret"></i><span>用户管理</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+</div>

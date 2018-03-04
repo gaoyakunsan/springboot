@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>压制系统管理后台</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+
+    <link rel="shortcut icon" href="../../public/static/img/favicon.ico" th:href="@{/static/img/favicon.ico}"/>
+
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../../public/static/bootstrap/css/bootstrap.css" th:href="@{/static/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" href="../../public/static/plugins/smoke/css/smoke.css" th:href="@{/static/plugins/smoke/css/smoke.css}"/>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../public/static/plugins/datatables/dataTables.bootstrap.css" th:href="@{/static/plugins/datatables/dataTables.bootstrap.css}"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../public/static/css/font-awesome.min.css" th:href="@{/static/css/font-awesome.min.css}"/>
+    <!-- Ionicons -->
+    <!--<link rel="stylesheet" href="css/ionicons.min.css">-->
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../public/static/dist/css/AdminLTE.css" th:href="@{/static/dist/css/AdminLTE.css}"/>
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="../../public/static/dist/css/skins/_all-skins.css" th:href="@{/static/dist/css/skins/_all-skins.css}"/>
+
+    <link rel="stylesheet" href="../../public/static/plugins/datepicker/datepicker3.css" th:href="@{/static/plugins/datepicker/datepicker3.css}"/>
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="../../public/static/plugins/daterangepicker/daterangepicker.css" th:href="@{/static/plugins/daterangepicker/daterangepicker.css}"/>
+    <!--flowplayer-->
+    <link rel="stylesheet" href="../../public/static/plugins/flowplayer/skin/functional.css" th:href="@{/static/plugins/flowplayer/skin/functional.css}"/>
+    <link rel="stylesheet" href="../../public/static/plugins/flowplayer/skin/flowplayer.quality-selector.css" th:href="@{/static/plugins/flowplayer/skin/flowplayer.quality-selector.css}"/>
+    <link rel="stylesheet" href="../../public/static/plugins/flowplayer/skin/flowplayer.speed-selector.css" th:href="@{/static/plugins/flowplayer/skin/flowplayer.speed-selector.css}"/>
+    <link rel="stylesheet" href="../../public/static/plugins/flowplayer/skin/flowplayer.seek-selector.css" th:href="@{/static/plugins/flowplayer/skin/flowplayer.seek-selector.css}"/>
+
+
+    <link rel="stylesheet" href="../../public/static/css/index.css" th:href="@{/static/css/index.css}"/>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+<div class="wrapper">
+
+    <header class="main-header">
+        <a href="/" class="logo">
+            <span class="logo-mini"><li class="fa fa-cube"></li></span>
+            <span class="logo-lg"><li class="fa fa-cubes"></li><b>&nbsp;压制系统后台</b></span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#"><i class="fa fa-user"></i> <span sec:authentication="name"></span></a>
+                    </li>
+                    <!--logout-->
+                    <li>
+                        <a id="logoutLnk" href="/exit" title="退出系统" ><i class="fa fa-sign-out"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="control-sidebar" title="主题"><i class="fa fa-gears"></i></a>
+                    </li>
+                    <!--<img id="topPhoto" class="user-image" alt="" />-->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar">
+        <div layout:fragment="nav">
+            导航
+        </div>
+    </aside>
+
+    <div class="content-wrapper">
+        <div th:if="${!#strings.isEmpty(alertMsg)}" th:class="'alert alert-dismissible alert-'+${alertType}" class="alert alert-info alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <i class="fa fa-info-circle"></i> <span th:text="${alertMsg}">提醒信息</span>
+        </div>
+        <section class="content" layout:fragment="content">
+            <div class="jumbotron">
+                <h2 class="text-info text-center">欢迎登录 &nbsp;<i class="fa fa-cloud"></i> 压制系统管理后台！</h2>
+            </div>
+        </section>
+    </div>
+
+
+    <aside class="control-sidebar control-sidebar-dark">
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        </ul>
+        <div class="tab-content">
+            <div id="control-sidebar-home-tab" class="tab-pane">
+            </div>
+            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+        </div>
+    </aside>
+
+    <div class="control-sidebar-bg"></div>
+</div>
+
+<form id="logoutForm" action="logout" style="height: 0px; height: 0px;" method="post">
+    <input id="hideCsrfVal" type="hidden" name="_csrf" />
+</form>
+
+<input id="hiddenUserId" type="hidden" th:value="${loginName}" />
+
+<!-- jQuery 2.2.3 -->
+<script src="../../public/static/plugins/jQuery/jquery-2.2.3.min.js" th:src="@{/static/plugins/jQuery/jquery-2.2.3.min.js}"></script>
+
+<!-- Bootstrap 3.3.6 -->
+<script src="../../public/static/bootstrap/js/bootstrap.min.js" th:src="@{/static/bootstrap/js/bootstrap.min.js}"></script>
+<script src="../../public/static/plugins/datatables/jquery.dataTables.js" th:src="@{/static/plugins/datatables/jquery.dataTables.js}"></script>
+<script src="../../public/static/plugins/datatables/dataTables.bootstrap.min.js" th:src="@{/static/plugins/datatables/dataTables.bootstrap.min.js}"></script>
+<!-- daterangepicker -->
+<script src="../../public/static/plugins/moment.min.js" th:src="@{/static/plugins/moment.min.js}"></script>
+<script src="../../public/static/plugins/daterangepicker/daterangepicker.js" th:src="@{/static/plugins/daterangepicker/daterangepicker.js}"></script>
+<!-- datepicker -->
+<script src="../../public/static/plugins/datepicker/bootstrap-datepicker.js" th:src="@{/static/plugins/datepicker/bootstrap-datepicker.js}"></script>
+<script src="../../public/static/plugins/daterangepicker/daterangepicker.js" th:src="@{/static/plugins/daterangepicker/daterangepicker.js}"></script>
+<!-- Slimscroll -->
+<script src="../../public/static/plugins/slimScroll/jquery.slimscroll.min.js" th:src="@{/static/plugins/slimScroll/jquery.slimscroll.min.js}"></script>
+
+<!--SMOKE-->
+<script src="../../public/static/plugins/smoke/js/smoke.js" th:src="@{/static/plugins/smoke/js/smoke.js}"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="../../public/static/plugins/html5shiv.min.js" th:src="@{/static/plugins/html5shiv.min.js}"></script>
+<script src="../../public/static/plugins/respond.min.js" th:src="@{/static/plugins/respond.min.js}"></script>
+<![endif]-->
+
+<!--flowplayer-->
+<script src="../../public/static/plugins/flowplayer/flowplayer.js" th:src="@{/static/plugins/flowplayer/flowplayer.js}"></script>
+<script src="../../public/static/plugins/flowplayer/flowplayer.quality-selector.js" th:src="@{/static/plugins/flowplayer/flowplayer.quality-selector.js}"></script>
+<script src="../../public/static/plugins/flowplayer/flowplayer.speed.js" th:src="@{/static/plugins/flowplayer/flowplayer.speed.js}"></script>
+<script src="../../public/static/plugins/flowplayer/flowplayer.seekdelta.js" th:src="@{/static/plugins/flowplayer/flowplayer.seekdelta.js}"></script>
+<!--<script src="plugins/flowplayer/hlsjs.min.js"></script>-->
+
+<!-- AdminLTE App -->
+<script src="../../public/static/dist/js/app.js" th:src="@{/static/dist/js/app.js}"></script>
+<script src="../../public/static/dist/js/rightCtr.js" th:src="@{/static/dist/js/rightCtr.js}"></script>
+<script src="../../public/static/js/index.js" th:src="@{/static/js/index.js}"></script>
+
+
+<p layout:fragment="foot-script" class="hidden">Custom script here</p>
+
+</body>
+</html>
