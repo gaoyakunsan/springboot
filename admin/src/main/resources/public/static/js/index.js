@@ -138,30 +138,13 @@
         }
     });
 
-    function initUser() {
-        var userId = window.userName = $('#hiddenUserId').val() ? $('#hiddenUserId').val() : '';
-
-        userId = userId.indexOf("@")>0 ? userId.substr(0, userId.indexOf("@")): userId;
-        var sidePhoto;
-        var topPhoto;
-        if(!userId || userId=="None"){
-            sidePhoto = "static/dist/img/avatar04.png";
-            userId = '';
-        }
-        else {
-            sidePhoto = "http://oa.pptv.com/Content/uploads/avatar/" + userId + ".jpg?width=120&height=120&mode=crop&quality=90&format=png";
-            topPhoto = "http://oa.pptv.com/Content/uploads/avatar/" + userId + ".jpg?width=100&height=100&mode=crop&quality=90&format=png";
-        }
-        // $('#sidePhoto').attr("src", sidePhoto);
-        // $('#topPhoto').attr("src", topPhoto);
-        // $('#topPhoto').attr('title', userName);
-        // $('#topPhoto').attr('alt', userName);
-        $('#headerUserName').html(userId);
-    }
+    /*function initUser() {
+        $('#headerUserName').html($('#hiddenUserId').val());
+    }*/
 
     function initView() {
     }
 
-    initUser();
+    //initUser();
     initView();
 }(window, jQuery));

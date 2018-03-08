@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EntityScan("com.springboot.core.domain")
 @EnableTransactionManagement
-@SpringBootApplication(scanBasePackages = {"com.springboot.core.business","com.springboot.admin.controler"})
+@SpringBootApplication(scanBasePackages = {"com.springboot.core.business","com.springboot.admin"})
 @EnableJpaRepositories("com.springboot.core.business.dao")
 
 

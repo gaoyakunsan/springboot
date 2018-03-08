@@ -30,13 +30,17 @@ public class TestController {
     @Autowired
     public AdmainService admainService;
 
-    @GetMapping(value = "/index")
+    /*@GetMapping(value = "/index")
     public String Test() {
-        //List<AdmainDO> list = admainService.findAllAdmain();
-        System.out.println("dsafdsf");
-        System.out.println(1111);
+
         return "index";
     }
+
+    @GetMapping(value = "/login")
+    public String login() {
+
+        return "login";
+    }*/
 
     //单表查询分页按条件查询
     @GetMapping(value = "/admin")
