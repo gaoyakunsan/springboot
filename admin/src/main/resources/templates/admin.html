@@ -32,7 +32,7 @@
 
 
         <div>
-            <form class="form-inline search-con" role="form" th:action="admin" th:object="${adminQueryParams}">
+            <form class="form-inline search-con" method="post" role="form" th:action="admin" th:object="${adminQueryParams}">
                 <div class="form-group">
                     <label class="">用户Id:</label>
                     <input name="adminId" class="form-control input-sm" type="text" maxlength="50"

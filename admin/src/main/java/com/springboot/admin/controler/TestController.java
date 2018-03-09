@@ -17,7 +17,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -43,7 +45,7 @@ public class TestController {
     }*/
 
     //单表查询分页按条件查询
-    @GetMapping(value = "/admin")
+    @RequestMapping(value = "/admin")
     public String admain(Model model, HttpServletRequest req,
         @Valid AdminQueryParams adminQueryParams, BindingResult bindingResult,
         @RequestParam(defaultValue = "1") int pageIndex,

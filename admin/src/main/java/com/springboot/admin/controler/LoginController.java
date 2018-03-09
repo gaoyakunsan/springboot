@@ -1,6 +1,5 @@
 package com.springboot.admin.controler;
 
-import com.mysql.jdbc.util.ServerController;
 import com.springboot.admin.model.User;
 import com.springboot.core.consts.UserConsts;
 import javax.servlet.http.HttpServletRequest;
@@ -11,12 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author yakungao
@@ -37,12 +34,8 @@ public class LoginController {
         return "index";
     }
 
-    @RequestMapping(value = "/redirect", method = RequestMethod.GET)
-    public String logined(Model model, HttpServletRequest request,
-        HttpServletResponse response) throws Exception {
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute(UserConsts.SESSION_KEY);
-        model.addAttribute("username", user.getUsername());
+    @GetMapping(value = "/redirect")
+    public String logined(){
         return "index";
     }
 
@@ -66,6 +59,18 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(UserConsts.SESSION_KEY, null);
         return "login";
+    }
+
+    @GetMapping(value = "/getSessionUser")
+    @ResponseBody
+    public String getSessionUser(HttpServletRequest request) {
+        String userName = "";
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute(UserConsts.SESSION_KEY);
+        if (user != null) {
+            userName = user.getUsername();
+        }
+        return userName;
     }
 
 }
