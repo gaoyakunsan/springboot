@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EntityScan("com.springboot.core.domain")
@@ -16,6 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /*@SpringBootApplication(scanBasePackages = {"com.springboot.core.business"})
 @EntityScan("com.springboot.core.domain")
 @EnableJpaRepositories("com.springboot.core.business.dao")*/
+@EnableRedisHttpSession(redisNamespace="test1", maxInactiveIntervalInSeconds = 3600)
 public class AdminApplication {
 
 	public static void main(String[] args) {

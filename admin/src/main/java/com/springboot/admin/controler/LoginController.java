@@ -44,11 +44,12 @@ public class LoginController {
         @RequestParam(required = true) String username,
         @RequestParam(required = true) String password) {
         if ("admin".equals(username) && "admin".equals(password)) {
+            logger.info("8082");
             User user = new User();
             user.setUsername(username);
             HttpSession session = request.getSession();
             session.setAttribute(UserConsts.SESSION_KEY, user);
-            return "redirect:/redirect";
+            return "index";
         } else {
             return "login";
         }
