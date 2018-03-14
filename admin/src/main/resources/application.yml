@@ -1,13 +1,15 @@
 server:
-  port: 8082
+  port: 8083
 
 spring:
+  session:
+    store-type: none
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://120.76.161.188:3306/zdjy?useUnicode=yes&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3306/spring_boot?useUnicode=yes&characterEncoding=utf8&useSSL=false
     username: root
-    password: 4!159td3q=b$9
+    password: root
     #最大活跃数
     maxActive: 20
     #初始化数量

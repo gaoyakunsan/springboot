@@ -6,8 +6,7 @@
 <!DOCTYPE html>
 <html lang="en" layout:decorate="~{fragments/layout}"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8"/>
 </head>
@@ -15,7 +14,7 @@
 <body>
 
 <div layout:fragment="nav">
-    <section th:replace="~{fragments/navigator :: nav('admin', 'admin')}"></section>
+    <section th:replace="~{fragments/navigator :: nav('user', 'user')}"></section>
 </div>
 
 <section layout:fragment="content">
@@ -32,11 +31,11 @@
 
 
         <div>
-            <form class="form-inline search-con" method="post" role="form" th:action="admin" th:object="${adminQueryParams}">
+            <form class="form-inline search-con" method="post" role="form" th:action="user" th:object="${userQueryParams}">
                 <div class="form-group">
                     <label class="">用户Id:</label>
-                    <input name="adminId" class="form-control input-sm" type="text" maxlength="50"
-                           th:value="*{adminId}"/>
+                    <input name="userId" class="form-control input-sm" type="text" maxlength="50"
+                           th:value="*{userId}"/>
                 </div>
 
                 <div class="form-group">
@@ -65,22 +64,18 @@
                                 <thead>
                                 <tr>
                                     <th>用户ID</th>
-                                    <th>名称名称</th>
-                                    <th>密码</th>
                                     <th>用户名</th>
-                                    <th>邮箱</th>
-                                    <th>手机号</th>
+                                    <th>密码</th>
+                                    <th>创建时间</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 <tr th:each="item: ${list}" th:object="${item}">
-                                    <td th:text="*{adminId}">6666</td>
+                                    <td th:text="*{id}">6666</td>
                                     <td th:text="*{username}">名称</td>
                                     <td th:text="*{password}"></td>
-                                    <td th:text="*{realname}">
-                                    <td th:text="*{email}"></td>
-                                    <td th:text="*{phone}"></td>
+                                    <td th:text="*{createTime}"></td>
                                 </tr>
                                 </tbody>
                             </table>
