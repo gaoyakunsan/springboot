@@ -51,6 +51,10 @@ public class AdmainService {
             Predicate adminId = criteriaBuilder.equal(root.get("adminId"), adminQueryParams.getAdminId());
             predicates.add(adminId);
         }
+      if (adminQueryParams.getUserName() != null && adminQueryParams.getUserName() != "") {
+        Predicate username = criteriaBuilder.equal(root.get("username"), adminQueryParams.getUserName());
+        predicates.add(username);
+      }
         return predicates;
     }
 
