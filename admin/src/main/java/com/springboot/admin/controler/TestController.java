@@ -34,6 +34,7 @@ public class TestController {
     public String Test() {
         //List<AdmainDO> list = admainService.findAllAdmain();
         System.out.println("dsafdsf");
+
         return "index";
     }
 
